@@ -1,0 +1,3 @@
+This plugin installs a polymorphic Telephone model into your application. After it is installed, you will be able to associate multiple Telephones with any model in your application. You will also have a polymorphic TelephonesController and views to re-use on all of your associated models. Telephone uses the 'has_many' associations included in Rails plus 'acts_as_list' to maintain Telephones as a sortable list.
+
+See 'vendor/plugins/lumber_jack_telephone/README' for more information.

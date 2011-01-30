@@ -1,0 +1,7 @@
+sqlite:
+  :adapter: sqlite
+  :database: vendor/plugins/lumber_jack_telephone/test/lumber_jack_telephone.sqlite.db
+
+sqlite3:
+  :adapter: sqlite3
+  :database: vendor/plugins/lumber_jack_telephone/test/lumber_jack_telephone.sqlite3.db

@@ -1,0 +1,11 @@
+<p>  
+  <%= render(:partial => 'nav_ancestors') unless @organization.ancestors.empty? %>
+  <b><%=h @organization.display_name %></b>
+  <%= render(:partial => 'nav_children') unless @organization.children.empty? %>
+</p>
+<fieldset><legend><%= @organization.name %></legend>
+  DBA: <%=h @organization.dba %><br />
+  Department: <%=h @organization.department %><br />
+  Tax ID Number: <%=h @organization.tax_id_number %><br />
+  <%= link_to 'Edit', edit_organization_path(@organization) %> | <%= link_to 'Back', organizations_path %>
+</fieldset>

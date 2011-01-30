@@ -1,0 +1,1 @@
+require 'lumber_jack_email_address'

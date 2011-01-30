@@ -1,0 +1,5 @@
+<fieldset>
+  <legend>Street Addresses</legend>
+  <%= render :partial => 'list', :locals => {:addressable => @addressable} %>
+  <%= link_to 'New Street Address', polymorphic_url([@addressable, StreetAddress.new], :action => 'new') %> | <%= link_to 'Back', url_for(@addressable) %>
+</fieldset>

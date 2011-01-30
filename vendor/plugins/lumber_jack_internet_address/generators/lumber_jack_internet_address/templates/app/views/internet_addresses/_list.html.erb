@@ -1,0 +1,13 @@
+<ul id="internet_addresses">
+  <% locatable.internet_addresses.each do |internet_address| %>
+    <% content_tag_for :li, internet_address do %>
+      <%= link_to internet_address.display_string, internet_address.to_s, :target => '_blank' %>
+      <%=h " (#{internet_address.purpose})" unless internet_address.purpose.blank? %>
+      <%= link_to image_tag('page_edit.png'), polymorphic_url([internet_address.locatable, internet_address], :action => 'edit') %> 
+      <%= link_to image_tag('page_delete.png'), polymorphic_url([internet_address.locatable, internet_address]), :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>&nbsp;&nbsp;
+    <% end %>
+  <% end %>
+  <li>Create a new Internet address: <%= link_to image_tag('page_add.png'), polymorphic_url([locatable, InternetAddress.new], :action => 'new') %></li>
+</ul>
+<%= sortable_element("internet_addresses", :url => sort_internet_addresses_path, :handle => "handle") %>

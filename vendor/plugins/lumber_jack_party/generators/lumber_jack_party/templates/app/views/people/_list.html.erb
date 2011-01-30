@@ -1,0 +1,12 @@
+<ul id="people">
+  <% @people.each do |person| %>
+    <% content_tag_for :li, person do %>
+      <%= link_to person.display_name, person %> 
+      <%= link_to image_tag('pencil.png', :alt => 'Edit'), edit_person_path(person) %> 
+      <%= link_to image_tag('delete.png', :alt => 'Delete'), person, :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>
+    <% end %>
+  <% end %>
+  <li>New: <%= link_to image_tag('add.png', :alt => 'New'), new_person_path %></li>
+</ul>
+<%= sortable_element("people", :url => sort_people_path, :handle => "handle") %>

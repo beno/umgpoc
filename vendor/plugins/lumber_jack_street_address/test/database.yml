@@ -1,0 +1,7 @@
+sqlite:
+  :adapter: sqlite
+  :dbfile: vendor/plugins/lumber_jack_street_address/test/lumber_jack_note.sqlite.db
+
+sqlite3:
+  :adapter: sqlite3
+  :dbfile: vendor/plugins/lumber_jack_street_address/test/lumber_jack_note.sqlite3.db

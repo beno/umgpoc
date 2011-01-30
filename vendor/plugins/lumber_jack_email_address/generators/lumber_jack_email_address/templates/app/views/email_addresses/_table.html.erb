@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Email Address</th>
+    <th>Purpose</th>
+  </tr>
+
+<% @email_addresses.each do |email_address| %>
+  <tr>
+    <td><%=h email_address.email_address %></td>
+    <td><%=h email_address.purpose %></td>
+    <td><%= link_to 'Show', polymorphic_url([email_address.emailable, email_address]) %></td>
+    <td><%= link_to 'Edit', polymorphic_url([email_address.emailable, email_address], :action => 'edit') %></td>
+    <td><%= link_to 'Destroy', polymorphic_url([email_address.emailable, email_address]), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New email_address', polymorphic_url([@emailable, EmailAddress.new], :action => 'new') %> | <%= link_to 'Back', url_for(@emailable) %>

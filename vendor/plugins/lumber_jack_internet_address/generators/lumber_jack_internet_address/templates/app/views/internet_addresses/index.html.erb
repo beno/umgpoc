@@ -1,0 +1,5 @@
+<h1>Internet Addresses</h1>
+<fieldset><legend>Internet Addresses</legend>
+<%= render :partial => 'list', :locals => {:locatable => @locatable} %>
+<%= link_to 'New Web Address', polymorphic_url([@locatable, InternetAddress.new], :action => 'new') %> | <%= link_to 'Back', url_for(@locatable) %>
+</fieldset>

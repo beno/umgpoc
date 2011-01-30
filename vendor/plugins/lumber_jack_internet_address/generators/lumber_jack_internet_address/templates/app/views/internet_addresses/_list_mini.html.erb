@@ -1,0 +1,4 @@
+<% locatable.internet_addresses.each do |internet_address| %>
+  <%= link_to internet_address.display_string, internet_address.to_s.downcase, :target => '_blank' %>
+  <%=h " (#{internet_address.purpose})" unless internet_address.purpose.blank? %><br />
+<% end %>

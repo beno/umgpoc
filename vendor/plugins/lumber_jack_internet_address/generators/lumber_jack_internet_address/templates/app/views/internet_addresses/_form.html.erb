@@ -1,0 +1,18 @@
+<% form_for([@locatable, @internet_address]) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :protocol %><br />
+    <%= f.select :protocol, ['http://', 'https://', 'ftp://', 'mailto:'] %>
+  </p>
+  <p>
+    <%= f.label :internet_address %><br />
+    <%= f.text_field :internet_address %>
+  </p>
+  <p>
+    <%= f.label :purpose %><br />
+    <%= f.text_field :purpose %>
+  </p>
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>

@@ -1,0 +1,18 @@
+<% form_for(@party) do |f| %>
+  <%= f.error_messages %>
+  <fieldset><legend>Organization:</legend>
+    <%= f.label :name %>: <%= f.text_field :name %><br />
+    <%= f.label :dba %>: <%= f.text_field :dba %><br />
+    <%= f.label :department %>: <%= f.text_field :department %><br />
+    <%= f.label :tax_id_number %>: <%= f.text_field :tax_id_number %>
+  </fieldset>
+  <fieldset><legend>Person:</legend>
+    <%= f.label :salutation %> <%= f.text_field :salutation %><br />
+    <%= f.label :first_name %> <%= f.text_field :first_name %><br />
+    <%= f.label :middle_name %> <%= f.text_field :middle_name %><br />
+    <%= f.label :last_name %> <%= f.text_field :last_name %><br />
+    <%= f.label :suffix %> <%= f.text_field :suffix %><br />
+    <%= f.label :tax_id_number %> <%= f.text_field :tax_id_number %>
+  </fieldset>
+    <%= f.submit 'Submit' %>
+<% end %>

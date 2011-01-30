@@ -1,0 +1,9 @@
+<fieldset><legend>Party Relationship:</legend>
+  <%=h @party_relationship.is_party.display_name %> is 
+  <%=h @party_relationship.relationship %> of 
+  <%=h @party_relationship.of_party.display_name %><br />
+  <b>Started on:</b> <%=h @party_relationship.started_on %><br />
+  <b>Ended on:</b> <%=h @party_relationship.ended_on %><br/>
+  <%= link_to 'Edit', edit_party_relationship_path(@party_relationship) %> |
+  <%= link_to 'Back', party_relationships_path %>
+</fieldset>

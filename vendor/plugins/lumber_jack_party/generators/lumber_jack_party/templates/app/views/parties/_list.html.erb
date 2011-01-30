@@ -1,0 +1,13 @@
+<ul id="parties">
+  <% @parties.each do |party| %>
+    <% content_tag_for :li, party do %>
+      <%= link_to party.display_name, party %> 
+      (<%=h party.type %>) 
+      <%= link_to image_tag('pencil.png', :alt => 'Edit'), edit_party_path(party) %> 
+      <%= link_to image_tag('delete.png', :alt => 'Delete'), party, :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>
+    <% end %>
+  <% end %>
+  <li>New: <%= link_to image_tag('add.png', :alt => 'New'), new_party_path %></li>
+</ul>
+<%= sortable_element("parties", :url => sort_parties_path, :handle => "handle") %>

@@ -1,0 +1,5 @@
+<% telephonic.telephones.each do |telephone| %>
+  <%=h telephone.display_string %> 
+  <%=h " (#{telephone.purpose})" unless telephone.purpose.blank? %>
+  <br />
+<% end %>

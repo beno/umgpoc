@@ -1,0 +1,13 @@
+<ul id="street_addresses">
+  <% addressable.street_addresses.each do |street_address| %>
+    <% content_tag_for :li, street_address do %>
+      <%=h street_address.display_string %>
+      <%=h " (#{street_address.purpose})" unless street_address.purpose.blank? %>
+      <%= link_to image_tag('world_edit.png'), polymorphic_url([street_address.addressable, street_address], :action => 'edit') %> 
+      <%= link_to image_tag('world_delete.png'), polymorphic_url([street_address.addressable, street_address]), :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>&nbsp;&nbsp;
+    <% end %>
+  <% end %>
+  <li>Create a new street address: <%= link_to image_tag('world_add.png'), polymorphic_url([addressable, StreetAddress.new], :action => 'new') %></li>
+</ul>
+<%= sortable_element("street_addresses", :url => sort_street_addresses_path, :handle => "handle") %>

@@ -1,0 +1,10 @@
+<p>
+  <b>Email Address: </b>
+  <%=h @email_address.email_address %>
+</p>
+<p>
+  <b>Purpose: </b>
+  <%=h @email_address.purpose %>
+</p>
+<%= link_to 'Edit', polymorphic_url([@emailable, @email_address], :action => 'edit') %> |
+<%= link_to 'Back', url_for(@emailable) %>

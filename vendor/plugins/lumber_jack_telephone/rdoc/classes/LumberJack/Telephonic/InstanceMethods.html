@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: LumberJack::Telephonic::InstanceMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">LumberJack::Telephonic::InstanceMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/lumber_jack/telephonic_rb.html">
+                lib/lumber_jack/telephonic.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+All instances of the Model (e.g. Organization) will receive these <a
+href="InstanceMethods.html">InstanceMethods</a>:
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000005">method_missing</a>&nbsp;&nbsp;
+      <a href="#M000004">telephone_best</a>&nbsp;&nbsp;
+      <a href="#M000003">telephone_for</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">method_missing</span><span class="method-args">(method_id, *arguments)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is a <a href="InstanceMethods.html#M000005">method_missing</a>
+implementation of <a
+href="InstanceMethods.html#M000003">telephone_for</a>(). Use either one as
+you like. (I prefer the regular <a
+href="InstanceMethods.html#M000003">telephone_for</a>() version).
+</p>
+<p>
+Organization.telephone_for_main =&gt; the <a
+href="../Telephone.html">Telephone</a> object with the purpose
+&#8216;Main&#8217; Note that this will return an instance of <a
+href="../Telephone.html">Telephone</a> (not a String) or nil.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/lumber_jack/telephonic.rb, line 72</span>
+72:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">arguments</span>)
+73:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span> = <span class="ruby-regexp re">/telephone_for_([_a-zA-Z]\w*)/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">method_id</span>.<span class="ruby-identifier">to_s</span>)
+74:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">telephones</span>.<span class="ruby-identifier">find</span>(
+75:             <span class="ruby-identifier">:first</span>, 
+76:             <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;purpose LIKE ?&quot;</span>, <span class="ruby-node">&quot;%#{$1.to_s.gsub('_', ' ')}%&quot;</span>], 
+77:             <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'position asc'</span>)
+78:         <span class="ruby-keyword kw">else</span>
+79:           <span class="ruby-keyword kw">super</span>
+80:         <span class="ruby-keyword kw">end</span>
+81:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">telephone_best</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Organization.telephone_best =&gt; the telephone object that has been sorted
+to the top of the list (using acts_as_list). Note that this will return an
+instance of <a href="../Telephone.html">Telephone</a> (not a String) or
+nil.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/lumber_jack/telephonic.rb, line 63</span>
+63:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">telephone_best</span>
+64:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">telephones</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'position asc'</span>)
+65:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">telephone_for</span><span class="method-args">(purpose)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Organization.telephone_for(&#8216;Main&#8217;) =&gt; the telephone object
+with the purpose &#8216;Main&#8217; Note that this will return an instance
+of <a href="../Telephone.html">Telephone</a> (not a String) or nil.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/lumber_jack/telephonic.rb, line 53</span>
+53:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">telephone_for</span>(<span class="ruby-identifier">purpose</span>)
+54:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">telephones</span>.<span class="ruby-identifier">find</span>(
+55:           <span class="ruby-identifier">:first</span>, 
+56:           <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">&quot;purpose LIKE ?&quot;</span>, <span class="ruby-node">&quot;#{purpose}&quot;</span>], 
+57:           <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'position asc'</span>)
+58:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

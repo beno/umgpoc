@@ -1,0 +1,12 @@
+<ul id="party_relationships">
+  <% @party_relationships.each do |party_relationship| %>
+    <% content_tag_for :li, party_relationship do %>
+      <%= link_to party_relationship.display_string, party_relationship %> 
+      <%= link_to image_tag('pencil.png', :alt => 'Edit'), edit_party_relationship_path(party_relationship) %> 
+      <%= link_to image_tag('delete.png', :alt => 'Delete'), party_relationship, :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>
+    <% end %>
+  <% end %>
+  <li>New: <%= link_to image_tag('add.png', :alt => 'New'), new_party_relationship_path %></li>
+</ul>
+<%= sortable_element("party_relationships", :url => sort_party_relationships_path, :handle => "handle") %>

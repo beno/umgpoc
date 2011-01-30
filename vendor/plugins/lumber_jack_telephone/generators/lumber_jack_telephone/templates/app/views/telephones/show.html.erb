@@ -1,0 +1,23 @@
+<p>
+  <b>Country Code:</b>
+  <%=h @telephone.country_code %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%=h @telephone.telephone %>
+</p>
+
+<p>
+  <b>Extension:</b>
+  <%=h @telephone.extension %>
+</p>
+
+<p>
+  <b>Purpose:</b>
+  <%=h @telephone.purpose %>
+</p>
+
+
+<%= link_to 'Edit', polymorphic_url([@telephonic, @telephone], :action => 'edit') %> |
+<%= link_to 'Back', url_for(@telephonic) %>

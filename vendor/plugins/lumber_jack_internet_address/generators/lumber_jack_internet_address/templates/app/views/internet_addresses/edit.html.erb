@@ -1,0 +1,5 @@
+<h1>Editing Web Address</h1>
+<%= render :partial => 'form' %>
+
+<%= link_to 'Show', polymorphic_url([@locatable, @internet_address]) %> |
+<%= link_to 'Back', url_for(@locatable) %>

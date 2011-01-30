@@ -1,0 +1,3 @@
+<% @organization.ancestors.reverse.each do |ancestor| %>
+  <%= link_to ancestor.display_name, ancestor %> &gt;
+<% end %>

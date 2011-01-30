@@ -1,0 +1,12 @@
+<ul id="organizations">
+  <% @organizations.each do |organization| %>
+    <% content_tag_for :li, organization do %>
+      <%= link_to organization.display_name, organization %> 
+      <%= link_to image_tag('pencil.png', :alt => 'Edit'), edit_organization_path(organization) %> 
+      <%= link_to image_tag('delete.png', :alt => 'Delete'), organization, :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>
+    <% end %>
+  <% end %>
+  <li>New: <%= link_to image_tag('add.png', :alt => 'New'), new_organization_path %></li>
+</ul>
+<%= sortable_element("organizations", :url => sort_organizations_path, :handle => "handle") %>

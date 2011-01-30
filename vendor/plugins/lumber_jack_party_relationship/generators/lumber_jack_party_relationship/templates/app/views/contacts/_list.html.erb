@@ -1,0 +1,12 @@
+<ul id="contacts">
+  <% @contacts.each do |contact| %>
+    <% content_tag_for :li, contact do %>
+      <%= link_to contact.display_string, contact %> 
+      <%= link_to image_tag('pencil.png', :alt => 'Edit'), edit_contact_path(contact) %> 
+      <%= link_to image_tag('delete.png', :alt => 'Delete'), contact, :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>
+    <% end %>
+  <% end %>
+  <li>New: <%= link_to image_tag('add.png', :alt => 'New'), new_contact_path %></li>
+</ul>
+<%= sortable_element("contacts", :url => sort_contacts_path, :handle => "handle") %>

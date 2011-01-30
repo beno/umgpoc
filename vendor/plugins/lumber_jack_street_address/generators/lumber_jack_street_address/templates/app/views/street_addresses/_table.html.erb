@@ -1,0 +1,16 @@
+<table id="street_addresses_table">
+  <tr><th>Address</th><th>Purpose</th><th>Action</th></tr>
+  <% addressable.street_addresses.each do |street_address| %>
+    <% content_tag_for :tr, street_address do %>
+      <td><%=h street_address.display_string %></td>
+      <td><%=h " #{street_address.purpose}" unless street_address.purpose.blank? %></td>
+      <td><%= link_to image_tag('world_edit.png'), polymorphic_url([street_address.addressable, street_address], :action => 'edit') %> 
+      <%= link_to image_tag('world_delete.png'), polymorphic_url([street_address.addressable, street_address]), :confirm => 'Are you sure?', :method => :delete %> </td>
+    <% end %>
+  <% end %>
+  <tr>
+    <td>Create a new street address:</td>
+    <td>&nbsp;</td>
+    <td><%= link_to image_tag('world_add.png'), polymorphic_url([addressable, StreetAddress.new], :action => 'new') %>
+  </td></tr>
+</table>

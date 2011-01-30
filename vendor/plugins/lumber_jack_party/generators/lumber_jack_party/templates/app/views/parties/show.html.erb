@@ -1,0 +1,19 @@
+<p>  
+  <%= render(:partial => 'nav_ancestors') unless @party.ancestors.empty? %>
+  <b><%=h @party.display_name %></b>
+  <%= render(:partial => 'nav_children') unless @party.children.empty? %>
+</p>
+<fieldset><legend>Organization:</legend>
+  <b>DBA:</b> <%=h @party.dba %><br />
+  <b>Department:</b> <%=h @party.department %><br />
+  <b>Tax ID Number:</b> <%=h @party.tax_id_number %>
+</fieldset>
+<fieldset><legend>Person:</legend>
+  <b>Salutation:</b> <%=h @party.salutation %><br />
+  <b>First name:</b> <%=h @party.first_name %><br />
+  <b>Middle name:</b> <%=h @party.middle_name %><br />
+  <b>Last name:</b> <%=h @party.last_name %><br />
+  <b>Suffix:</b> <%=h @party.suffix %><br />
+  <b>Tax ID Number:</b> <%=h @party.tax_id_number %><br />
+  <%= link_to 'Edit', edit_party_path(@party) %> | <%= link_to 'Back', parties_path %>
+</fieldset>

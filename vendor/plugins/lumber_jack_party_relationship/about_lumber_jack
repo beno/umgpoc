@@ -1,0 +1,33 @@
+About LumberJack
+================
+I am most interested in the business layer that 'sits on top of rails.' This
+goal of this project is to create a reusable library of business objects for
+use in any project. For example, how many times have you created telephones,
+street addresses, e-mail addresses, orders, line items, etc. for a new
+project? It makes sense to encapsulate this business logic into reusable
+models for use on future projects.
+
+Please help! Please share any business logic that you think will help
+enhance the models in this library. Any business logic will help -- especially
+when it comes to internationalization.
+
+Why the name 'LumberJack'?
+==========================
+I grew up in the Minnesota north woods where legend spoke of the giant
+lumberjack Paul Bunyan and Babe his big blue ox. The legend says that Paul was
+so large at birth that it required three storks to carry him to his house. As
+school children, we learned that Minnesota's 10,000 lakes were created by
+Paul's footprints filled-up with rain. Also, His axe was so large that he
+could fell several trees in a single swing. Paul's skill with an axe, of
+course, made him the original 'hacker' and a fitting namesake for this
+project.
+
+Also see: http://en.wikipedia.org/wiki/Paul_Bunyan for more stories and photos
+about Paul.
+
+Theme Song
+==========
+Every open source project deserves a theme song. For a good laugh, see ours at
+http://www.youtube.com/watch?v=PpxQp3Hy5nk
+
+Copyright (c) 2009 Brian K. Long, released under the MIT license

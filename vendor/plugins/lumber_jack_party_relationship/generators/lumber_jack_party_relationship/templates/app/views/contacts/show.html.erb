@@ -1,0 +1,9 @@
+<fieldset><legend>Contact:</legend>
+  <%=h @contact.is_party.display_name %> is 
+  <%=h @contact.relationship %> of 
+  <%=h @contact.of_party.display_name %><br />
+  <b>Started on:</b> <%=h @contact.started_on %><br />
+  <b>Ended on:</b> <%=h @contact.ended_on %><br/>
+  <%= link_to 'Edit', edit_contact_path(@contact) %> |
+  <%= link_to 'Back', contacts_path %>
+</fieldset>

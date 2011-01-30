@@ -1,0 +1,12 @@
+<% form_for(@person) do |f| %>
+  <%= f.error_messages %>
+  <fieldset><legend>Person</legend>
+      <%= f.label :salutation %> <%= f.text_field :salutation %><br />
+      <%= f.label :first_name %> <%= f.text_field :first_name %><br />
+      <%= f.label :middle_name %> <%= f.text_field :middle_name %><br />
+      <%= f.label :last_name %> <%= f.text_field :last_name %><br />
+      <%= f.label :suffix %> <%= f.text_field :suffix %><br />
+      <%= f.label :tax_id_number %> <%= f.text_field :tax_id_number %><br />
+      <%= f.submit 'Update' %>
+  </fieldset>
+<% end %>

@@ -1,0 +1,13 @@
+<ul id="email_addresses">
+  <% emailable.email_addresses.each do |email_address| %>
+    <% content_tag_for :li, email_address do %>
+      <%=h email_address.format %>
+      <%=h " (#{email_address.purpose})" unless email_address.purpose.blank? %>
+      <%= link_to image_tag('email_edit.png'), polymorphic_url([email_address.emailable, email_address], :action => 'edit') %> 
+      <%= link_to image_tag('email_delete.png'), polymorphic_url([email_address.emailable, email_address]), :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>&nbsp;&nbsp;
+    <% end %>
+  <% end %>
+  <li><%= link_to image_tag('email_add.png'), polymorphic_url([emailable, EmailAddress.new], :action => 'new') %></li>
+</ul>
+<%= sortable_element("email_addresses", :url => sort_email_addresses_path, :handle => "handle") %>

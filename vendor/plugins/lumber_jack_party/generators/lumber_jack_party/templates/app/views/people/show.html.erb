@@ -1,0 +1,14 @@
+<p>  
+  <%= render(:partial => 'nav_ancestors') unless @person.ancestors.empty? %>
+  <b><%=h @person.display_name %></b>
+  <%= render(:partial => 'nav_children') unless @person.children.empty? %>
+</p>
+<fieldset><legend><%=h @person.display_name %></legend>
+  <b>Salutation:</b> <%=h @person.salutation %><br />
+  <b>First name:</b> <%=h @person.first_name %><br />
+  <b>Middle name:</b> <%=h @person.middle_name %><br />
+  <b>Last name:</b> <%=h @person.last_name %><br />
+  <b>Suffix:</b> <%=h @person.suffix %><br />
+  <b>Tax ID Number:</b> <%=h @person.tax_id_number %><br />
+  <%= link_to 'Edit', edit_person_path(@person) %> | <%= link_to 'Back', people_path %>
+</fieldset>

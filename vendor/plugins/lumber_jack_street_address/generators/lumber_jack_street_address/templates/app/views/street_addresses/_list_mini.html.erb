@@ -1,0 +1,5 @@
+<% addressable.street_addresses.each do |street_address| %>
+  <%=h street_address.display_string %>
+  <%=h " (#{street_address.purpose})" unless street_address.purpose.blank? %>
+  <br />
+<% end %>

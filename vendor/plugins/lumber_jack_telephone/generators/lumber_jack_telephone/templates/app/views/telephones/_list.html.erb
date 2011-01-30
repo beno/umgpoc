@@ -1,0 +1,31 @@
+<ul id="telephones">
+  <% telephonic.telephones.each do |telephone| %>
+    <% content_tag_for :li, telephone do %>
+      <%=h telephone.display_string %>
+      <%=h " (#{telephone.purpose})" unless telephone.purpose.blank? %>
+      <%= link_to image_tag('telephone_edit.png'), polymorphic_url([telephone.telephonic, telephone], :action => 'edit') %> 
+      <%= link_to image_tag('telephone_delete.png'), polymorphic_url([telephone.telephonic, telephone]), :confirm => 'Are you sure?', :method => :delete %> 
+      <span class="handle"><%= image_tag('arrow_switch.png') %></span>&nbsp;&nbsp;
+    <% end %>
+  <% end %>
+  <li>Create a new telephone: <%= link_to image_tag('telephone_add.png'), polymorphic_url([telephonic, Telephone.new], :action => 'new') %></li>
+</ul>
+New Telephone: 
+<% form_for([telephonic, Telephone.new]) do |f| %>
+  <%# f.error_messages %>
+    Country: 
+    <%= f.select :country_code, TELEPHONE_COUNTRY_CODES.sort, :selected => Telephone.default_country_code %>
+    Telephone: 
+    <%= f.text_field :telephone, :size => 15 %>
+    Ext: 
+    <%= f.text_field :extension, :size => 5 %>
+    Purpose: 
+    <%= f.text_field :purpose, :size => 10 %>
+    <%= f.submit 'Update' %>
+<% end %>
+<%= sortable_element("telephones", :url => sort_telephones_path, :handle => "handle") %>
+
+<%# link_to_function('[New Activity]', "Element.toggle('create_activity_form')") %>
+<%# <div id="create_activity_form" style="display: none;"> %>
+<%# FORM HERE %>
+<%# </div> %>

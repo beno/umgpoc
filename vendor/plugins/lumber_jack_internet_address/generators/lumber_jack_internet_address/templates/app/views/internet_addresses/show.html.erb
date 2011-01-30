@@ -1,0 +1,10 @@
+<p>
+  <b>Web Address: </b>
+  <%=h @internet_address.internet_address %>
+</p>
+<p>
+  <b>Purpose: </b>
+  <%=h @internet_address.purpose %>
+</p>
+<%= link_to 'Edit', polymorphic_url([@locatable, @internet_address], :action => 'edit') %> |
+<%= link_to 'Back', url_for(@locatable) %>

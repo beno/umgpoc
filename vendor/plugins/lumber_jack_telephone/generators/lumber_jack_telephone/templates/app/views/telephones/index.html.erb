@@ -1,0 +1,5 @@
+<fieldset>
+  <legend>Telephones:</legend>
+  <%= render :partial => 'list', :locals => {:telephonic => @telephonic} %>
+  <%= link_to 'New telephone', polymorphic_url([@telephonic, Telephone.new], :action => 'new') %> | <%= link_to 'Back', url_for(@telephonic) %>  
+</fieldset>

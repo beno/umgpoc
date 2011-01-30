@@ -1,0 +1,14 @@
+/*
+  Think of this stylesheet as 'scaffolding'. You will probably want to replace
+  this with your own styles. Feel free to delete this file if you no longer
+  need it. 
+ */
+
+li .handle {
+  cursor: move;
+}
+
+img{
+  border-style: none;
+}
+

@@ -1,0 +1,22 @@
+<% form_for(@party_relationship) do |f| %>
+  <%= f.error_messages %>
+
+    <%= f.label :is_party_id, "Party" %>
+    <%= f.collection_select :is_party_id,
+            Party.find(:all,
+            :order => 'name, dba, department, last_name, first_name'), 
+            :id, 
+            :display_name, 
+            :include_blank => true %>
+    Is 
+    <%= f.label :relationship %> 
+    <%= f.text_field :relationship %> 
+    <%= f.label :of_party_id, "of Party" %>
+    <%= f.collection_select :of_party_id,
+            Party.find(:all,
+            :order => 'name, dba, department, last_name, first_name'), 
+            :id, 
+            :display_name, 
+            :include_blank => true %> 
+    <%= f.submit 'Create' %>
+<% end %>
