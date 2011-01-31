@@ -1,4 +1,5 @@
 require "fat_free_crm"
+require "party_model"
 
 #---------------------------------------------------------------------
 Sass::Plugin.options[:template_location] = File.join(Rails.root, "app/stylesheets")
