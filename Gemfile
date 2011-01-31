@@ -8,10 +8,15 @@ gem 'rails', '3.0.3'
 gem 'acts_as_commentable',  '>= 3.0.1'
 gem 'authlogic',            '>= 2.1.6', :path => File.join(File.dirname(__FILE__), 'vendor', 'gems', 'authlogic')
 gem 'haml',                 '>= 3.0.24'
-gem 'mysql2',               '>= 0.2.6'
+# gem 'mysql2',               '>= 0.2.6'
+gem 'sqlite3'
 gem 'paperclip',            '>= 2.3.6'
 gem 'simple_column_search', '>= 1.1.0'
 gem 'will_paginate',        '>= 3.0.pre2'
+
+gem "acts_as_list"
+gem "geokit"
+gem "acts_as_tree"
 
 group :development do
   gem 'annotate',           '>= 2.4.0'
