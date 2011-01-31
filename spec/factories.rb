@@ -42,6 +42,25 @@ Factory.sequence :date do |x|
   Date.today - x.days
 end
 
+Factory.define :party do |p|
+  p.user                { |a| a.association(:user) }
+  p.assigned_to         nil
+  p.name                { Faker::Company.name }
+  p.access              "Public"
+  p.deleted_at          nil
+  p.updated_at          { Factory.next(:time) }
+  p.created_at          { Factory.next(:time) }
+end
+
+Factory.define :party_relationship do |r|
+  r.is_party_id       {|p| p.association(:party) } 
+  r.relationship      "Contact"
+  r.of_party_id       {|p| p.association(:party) } 
+  r.role             "Contactpersoon"
+  r.started_on        { Factory.next(:time) }
+  r.ended_on          { Factory.next(:time) }
+end
+
 #----------------------------------------------------------------------------
 Factory.define :account do |a|
   a.user                { |a| a.association(:user) }
