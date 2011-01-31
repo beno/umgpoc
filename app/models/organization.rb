@@ -1,0 +1,2 @@
+class Organization < Party 
+end
