@@ -113,10 +113,10 @@ task_calendar_with_time: false
 :tabs: [
   { :active : true,  :text : :tab_dashboard,     :url : { :controller : "home"           } },
   { :active : false, :text : :tab_tasks,         :url : { :controller : "tasks"          } },
+  { :active : false, :text : :tab_people,      :url : { :controller : "people"       } },
+  { :active : false, :text : :tab_organizations,      :url : { :controller : "organizations"       } },
   { :active : false, :text : :tab_campaigns,     :url : { :controller : "campaigns"      } },
   { :active : false, :text : :tab_leads,         :url : { :controller : "leads"          } },
-  { :active : false, :text : :tab_accounts,      :url : { :controller : "accounts"       } },
-  { :active : false, :text : :tab_contacts,      :url : { :controller : "contacts"       } },
   { :active : false, :text : :tab_opportunities, :url : { :controller : "opportunities"  } }
 ]
 
@@ -138,6 +138,22 @@ task_calendar_with_time: false
 #   - "Custom"
 #
 #------------------------------------------------------------------------------
+party_category:
+  - :affiliate
+  - :competitor
+  - :customer
+  - :partner
+  - :reseller
+  - :vendor
+
+party_category_color:
+  :affiliate   : lavender
+  :competitor  : paleturquoise
+  :customer    : pink
+  :partner     : bisque
+  :reseller    : thistle
+  :vendor      : skyblue
+
 account_category:
   - :affiliate
   - :competitor
