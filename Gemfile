@@ -17,6 +17,11 @@ gem 'will_paginate',        '>= 3.0.pre2'
 gem "acts_as_list"
 gem "geokit"
 gem "acts_as_tree"
+gem "paranoid", ">= 0.0.10", :git => "https://github.com/tardate/paranoid.git"
+#gem "semantic_form_for", "~> 0.3.4", :git => "https://github.com/stouset/semantic_form_for.git"
+gem "simple_form"
+gem "viewpoint"
+gem 'nested_form', :path => File.join(File.dirname(__FILE__), 'vendor', 'gems', 'nested_form')
 
 group :development do
   gem 'annotate',           '>= 2.4.0'
@@ -26,7 +31,8 @@ end
 
 group :test do
   gem 'test-unit', '1.2.3' if RUBY_VERSION.to_f >= 1.9
-  gem 'factory_girl',       '>= 1.3.2'
+  gem 'factory_girl',       '~> 1.3.3'       
+  gem 'factory_girl_rails', '~> 1.0.1'       
   gem 'ffaker',             '>= 1.0.0'
   gem "rspec-rails",        '>= 2.4.1'
   gem "rspec",              '>= 2.4.0'
