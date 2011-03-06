@@ -172,7 +172,7 @@ private
 
   #----------------------------------------------------------------------------
   def update_recently_viewed
-    subject = instance_variable_get("@#{controller_name.singularize}")
+    subject = (instance_variable_get("@#{controller_name.singularize}") or @party)
     if subject
       Activity.log(@current_user, subject, :viewed)
     end
