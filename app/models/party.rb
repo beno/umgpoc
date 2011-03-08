@@ -17,7 +17,7 @@ class Party < ActiveRecord::Base
   simple_column_search :name, :email, :match => :middle, :escape => lambda { |query| query.gsub(/[^\w\s\-\.']/, "").strip }
   uses_user_permissions
   acts_as_commentable
-  is_paranoid
+  paranoid
   exportable
   sortable :by => [ "name ASC", "rating DESC", "created_at DESC", "updated_at DESC" ], :default => "created_at DESC"
 
