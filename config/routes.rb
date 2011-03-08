@@ -18,6 +18,36 @@ FatFreeCRM::Application.routes.draw do
   resources :emails
   resources :passwords
 
+  resources :organizations do
+    collection do
+      get  :options
+      get  :search
+      post :auto_complete
+      post :redraw
+    end
+    member do
+      put :attach
+      post :discard
+    end
+  end
+
+  resources :people do
+    collection do
+      get  :options
+      get  :search
+      post :auto_complete
+      post :redraw
+    end
+    member do
+      put :attach
+      post :discard
+    end
+  end
+  
+  namespace :party_model do
+    resources :street_addresses
+  end
+  
   resources :accounts do
     collection do
       get  :options
