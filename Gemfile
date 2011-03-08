@@ -19,7 +19,7 @@ gem "geokit"
 gem "acts_as_tree"
 gem "paranoid", ">= 0.0.10", :git => "https://github.com/tardate/paranoid.git"
 #gem "semantic_form_for", "~> 0.3.4", :git => "https://github.com/stouset/semantic_form_for.git"
-gem "simple_form"
+#gem "simple_form"
 gem "viewpoint"
 gem 'nested_form', :path => File.join(File.dirname(__FILE__), 'vendor', 'gems', 'nested_form')
 
