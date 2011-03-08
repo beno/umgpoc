@@ -6,7 +6,8 @@ describe Party do
   before { login }
 
   it "should create a new instance given valid attributes" do
-    Party.create!(:name => "Test Party", :user => Factory(:user))
+    p = Party.create!(:name => "Test Party", :user => Factory(:user))
+    p.name.should == "Test Party"
   end
 
   describe "Attach" do
@@ -57,6 +58,22 @@ describe Party do
       @party.opportunities.count.should == 0
     end
   end
+
+  describe "Addresses" do
+    before do
+      @party = Factory(:party)
+    end
+    
+    it "should add a billing address" do
+      @billing_address_old = Factory(:street_address)
+      @billing_address_new = Factory(:street_address)
+      @party.assign_street_address_for!('billing', @billing_address_old)
+      @party.street_address_for_billing = @billing_address_new
+      @party.street_address_for_billing.should == @billing_address_new
+      @party.street_addresses.size.should == 2 
+    end   
+  end
+
 
 #  describe "Exportable" do
 #    describe "assigned account" do
