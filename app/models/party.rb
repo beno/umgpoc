@@ -14,7 +14,7 @@ class Party < ActiveRecord::Base
   scope :created_by, lambda { |user| where(:user_id => user.id) }
   scope :assigned_to, lambda { |user| where(:assigned_to => user.id) }
 
-  simple_column_search :name, :email, :match => :middle, :escape => lambda { |query| query.gsub(/[^\w\s\-\.']/, "").strip }
+  simple_column_search :name, :match => :middle, :escape => lambda { |query| query.gsub(/[^\w\s\-\.']/, "").strip }
   uses_user_permissions
   acts_as_commentable
   paranoid
