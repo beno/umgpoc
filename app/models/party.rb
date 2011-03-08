@@ -38,7 +38,30 @@ class Party < ActiveRecord::Base
     location = self[:billing_address].strip.split("\n").last
     location.gsub(/(^|\s+)\d+(:?\s+|$)/, " ").strip if location
   end
+  
+  # Party model methods
+  #----------------------
+  
+  def website
+    internet_addresses.first
+  end
 
+  def email
+    email_addresses.first
+  end
+
+  def toll_free_phone
+    nil
+  end
+
+  def phone
+    telephones.first
+  end
+
+  def fax
+    telephones.first
+  end
+  
   # Attach given attachment to the account if it hasn't been attached already.
   #----------------------------------------------------------------------------
   def attach!(attachment)
