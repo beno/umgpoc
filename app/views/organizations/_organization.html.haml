@@ -1,0 +1,32 @@
+- amount = organization.opportunities.pipeline.map(&:weighted_amount).sum
+%li[organization]{ highlightable(dom_id(organization, :tools)) }
+  - if organization.category
+    .strip{:class => organization.category} #{t(organization.category)}
+  - else
+    .strip{:style => "color: gray;"} #{t :other}
+
+  .tools{ invisible, :id => dom_id(organization, :tools) }
+    = hook(:organization_tools_before, self, :organization => organization)
+    = link_to_edit(organization) + " | "
+    = link_to_delete(organization)
+
+  .indent
+    = link_to(h(organization.name), organization)
+    - if amount != 0.0
+      %span.amount= number_to_currency(amount, :precision => 0)
+    &ndash;
+    %tt
+      = organization.location << ", " unless organization.location.blank?
+      = t(:added_by, :time_ago => time_ago_in_words(organization.created_at), :user => (organization.user.id == @current_user.id ? t(:me) : h(organization.user.full_name))) << " | "
+      = t('pluralize.contact', organization.contacts.count) << " | "
+      = t('pluralize.opportunity', organization.opportunities.count)
+
+
+    - unless @current_user.preference[:organizations_outline] == "brief"
+      %dt
+        = stars_for(organization) + " | "
+        /= link_to(organization.website, organization.website.to_url) << " | " if organization.website.present?
+        /= link_to_email(organization.email) << " | " if organization.email.present?
+        /= t(:phone_small) << ": " << (organization.toll_free_phone || organization.phone) if organization.toll_free_phone? || organization.phone?
+      = hook(:organization_bottom, self, :organization => organization)
+

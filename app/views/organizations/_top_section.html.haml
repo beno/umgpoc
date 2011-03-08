@@ -1,0 +1,29 @@
+.section
+  %table
+    %tr
+      %td(colspan="5")
+        .label.top.req #{t :name}:
+        = f.text_field :name, :style => "width:500px"
+    %tr
+      %td
+        .label #{t :assigned_to}:
+        = collection_select :organization, :assigned_to, @users, :id, :full_name, { :include_blank => t(:myself) }, { :style => "width:160px" }
+
+      %td= spacer
+      %td
+        .label #{t :category}:
+        = f.select :category, Setting.unroll(:party_category), { :selected => (@party.category || "other").to_sym, :include_blank => t(:other) }, { :style => "width:160px" }
+      %td= spacer
+      %td
+        .label #{t :rating}:
+        = rating_select "organization[rating]", { :id => :organization_rating, :selected => @party.rating, :style => "width:160px" }
+
+    - if Setting.background_info && Setting.background_info.include?(:organization)
+      %tr
+        %td(colspan="5")
+          .label= t(:background_info) << ':'
+          = f.text_area :background_info, :style =>"width:500px", :rows => 3
+
+    = hook(:party_top_section_bottom, self, :f => f)
+
+= hook(:party_top_section_after, self, :f => f)

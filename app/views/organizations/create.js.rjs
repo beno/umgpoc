@@ -1,0 +1,15 @@
+if @party.valid?
+  page[:create_organization_arrow].replace_html "&#9658;"
+  page[:create_organization_title].replace_html t(:organizations)
+  page.visual_effect :toggle_blind, :create_organization, :duration => 0.3, :afterFinish => 'function(effect) {effect.element.update("")}'
+  page.insert_html :top, :organizations, :partial => "organization", :collection => [ @party ]
+  page[dom_id(@party)].visual_effect :highlight, :duration => 1.5
+  page << refresh_sidebar(:index, :filters)
+  page[:paginate].replace_html :partial => "common/paginate"
+  page.call "crm.flick", :empty, :remove
+else
+  page[:create_organization].replace_html :partial => "create"
+  page[:create_organization].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:organization_name].focus
+end
+

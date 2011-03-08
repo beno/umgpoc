@@ -1,0 +1,47 @@
+- won = @party.opportunities.won.map(&:amount).sum
+- lost = @party.opportunities.lost.map(&:amount).sum
+- pipeline = @party.opportunities.pipeline.map(&:weighted_amount).sum
+
+.panel#summary
+  %h4= h(@party.name)
+  - if @party.website
+    %div
+      %b= link_to(truncate(@party.website, :length => 30), @party.website.to_url, :"data-popup" => true, :title => t(:open_in_window, @party.website))
+  - if @party.email.present?
+    %div
+      %b= link_to_email(@party.email, 30)
+
+  %div
+    - if @party.toll_free_phone
+      #{t :phone_toll_free}: <b>#{@party.toll_free_phone}</b><br />
+
+    - if @party.phone
+      #{t :phone}: <b>#{@party.phone}</b><br />
+
+    - if @party.fax
+      #{t :fax}: <b>#{@party.fax}</b><br />
+
+  %div= render "street_addresses/show", :type => 'mail', :title => :mail_address
+  %div= render "street_addresses/show", :type => 'visiting', :title => :visiting_address
+
+  .caption #{t :organization_summary}
+  %li
+    %dt= pipeline != 0.0 ? number_to_currency(pipeline, :precision => 0) : t(:n_a)
+    %tt #{t :pipeline}:
+  %li
+    %dt= won != 0.0 ? number_to_currency(won, :precision => 0) : t(:n_a)
+    %tt #{t :won}:
+  %li
+    %dt= lost != 0.0 ? number_to_currency(lost, :precision => 0) : t(:n_a)
+    %tt #{t :lost}:
+  %li
+    %dt= t(@party.category, :default => :other)
+    %tt #{t :category}:
+  %li
+    %span{:style => "float:right;"}= stars_for(@party)
+    %tt #{t :rating}:
+  %li.last
+    %dt= truncate((@party.assigned_to ? @party.assignee.full_name : @party.user.full_name), :length => 16)
+    %tt #{t :assigned_to}:
+
+  = hook(:show_party_sidebar_bottom, self, :party => @party)

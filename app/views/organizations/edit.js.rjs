@@ -1,0 +1,34 @@
+id = dom_id(@party)
+
+if params[:cancel].true? # <--------------------- Hide [Edit Org]
+
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_organization
+    page.call "crm.set_title", :edit_organization, @party.name
+  else                                            # Called from partys list item...
+    page[id].replace :partial => "organization", :collection => [ @party ]
+  end
+
+else # <----------------------------------------  Show [Edit Account] form.
+
+  if params[:cancel].blank?                       # Called from parties list item...
+    if @previous                                  # Hide open [Edit Account] form if any.
+      if @previous.is_a?(Organization)
+        page[dom_id(@previous)].replace :partial => "organization", :collection => [ @previous ]
+      else
+        page.call "crm.flick", "party_#{@previous}", :remove
+      end
+    end
+    page.call "crm.highlight_off", id             # Disable onMouseOver for the list item.
+    page.call "crm.hide_form", :create_organization    # Hide [Create Account] form if any.
+    page[id].replace_html :partial => "edit"      # Show [Edit Account] form.
+
+  elsif params[:cancel].false?                    # Called from title of the party landing page...
+    page[:edit_organization].replace_html :partial => "edit"
+    page.call "crm.flip_form", :edit_organization
+    page.call "crm.set_title", :edit_organization, "#{t :edit} #{@party.name}"
+  end
+  page[:organization_name].focus
+
+end
+

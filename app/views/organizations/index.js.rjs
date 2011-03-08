@@ -1,0 +1,6 @@
+unless @parties.blank?
+  page[:organizations].replace_html render @parties
+else
+  page[:organizations].replace_html :partial => "common/empty"
+end
+page[:paginate].replace_html :partial => "common/paginate"

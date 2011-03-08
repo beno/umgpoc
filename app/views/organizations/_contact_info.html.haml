@@ -1,0 +1,58 @@
+- edit ||= false
+- collapsed = (@party.errors.empty? && session[:party_contact].nil?)
+= subtitle :party_contact, collapsed, t(:contact_info)
+.section
+  %small#party_contact_intro{ hidden_if(!collapsed) }
+    = t(:intro, t(:organizations_small)) unless edit
+  #party_contact{ hidden_if(collapsed) }
+    - Organization::ADDRESS_TYPES.each do |purpose|
+      .subsection
+        .tools
+          = f.link_to_add(t(:"new_#{purpose}_address"), :street_addresses, :purpose => purpose)
+        .caption
+          = t(:"#{purpose}_addresses")
+        %div{:class => "street_addresses_with_purpose_#{purpose}_fields"}
+          = f.fields_for(:street_addresses, @party.street_addresses_for(purpose)) do |a|
+            = render 'street_addresses/create', :f => a      
+    .subsection
+      .tools
+        = f.link_to_add(t(:new_telephone), :telephones)
+      .caption
+        = t(:telephone_numbers)
+      .telephones_fields
+        = f.fields_for(:telephones) do |t|
+          %ul
+            %li.telephone
+              = t.label :phone_number
+              = t.text_field :telephone
+            %li{:style => "margin:16px 10px 0 0"}
+              = t.link_to_remove "X"
+    .subsection
+      .tools
+        = f.link_to_add(t(:new_email_address), :email_addresses)
+      .caption
+        = t(:email_addresses)
+      .email_addresses_fields
+        = f.fields_for(:email_addresses) do |e|
+          %ul
+            %li.email
+              = e.label :email_address
+              = e.text_field :email_address
+            %li{:style => "margin:16px 10px 0 0"}
+              =e.link_to_remove "X"
+    .subsection{:style => 'clear:all'}
+      .tools
+        = f.link_to_add(t(:new_internet_address), :internet_addresses)
+      .caption
+        = t(:internet_addresses)
+      .internet_addresses_fields
+        = f.fields_for(:internet_addresses) do |f|
+          %ul
+            %li.protcol
+              = f.label :protocol
+              = f.select :protocol, %w[http https]
+            %li.email
+              = f.label :internet_address
+              = f.text_field :internet_address
+            %li{:style => "margin:16px 10px 0 0"}
+              = f.link_to_remove "X"

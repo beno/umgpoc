@@ -1,0 +1,19 @@
+.remote
+  = nested_form_for(@party, :html => one_submit_only(:organization), :remote => true) do |f|
+    = link_to_close edit_organization_path(@party)
+    = f.hidden_field :user_id
+
+    = f.error_messages :object_name => t('organization')
+
+    = render "organizations/top_section",  :f => f, :edit => true
+    = render "organizations/contact_info", :f => f, :edit => true
+    = render "organizations/permissions",  :f => f, :edit => true
+
+    .buttonbar
+      - if Setting.compound_address
+        = f.submit t(:save_organization), :onclick => "crm.clear_all_hints()"
+      - else
+        = f.submit t(:save_organization)
+      #{t :or}
+      = link_to_cancel edit_organization_path(@party)
+

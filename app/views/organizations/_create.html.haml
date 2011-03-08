@@ -1,0 +1,19 @@
+= nested_form_for(@party, :html => one_submit_only(:organization), :remote => true) do |f|
+  = link_to_close new_organization_path
+  = f.hidden_field :user_id
+
+  = f.error_messages :object_name => t('organization')
+
+  = render "organizations/top_section",  :f => f
+  = render "organizations/contact_info", :f => f
+  = render "organizations/relationships", :f => f
+  = render "organizations/permissions",  :f => f
+  .buttonbar
+    - if Setting.compound_address
+      = f.submit t(:create_organization), :onclick => "crm.clear_all_hints()"
+    - else
+      = f.submit t(:create_organization)
+    #{t :or}
+    = link_to_cancel new_organization_path
+
+

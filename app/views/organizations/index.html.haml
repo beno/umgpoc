@@ -1,0 +1,21 @@
+= styles_for :organization
+
+.title_tools
+  = link_to_inline(:create_organization, new_organization_path, :text => t(:create_organization)) << " | "
+  = link_to_inline(:options, options_organizations_path, :text=> t(:options))
+
+.title
+  %span#create_organization_title #{t :organizations}
+  = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: none;")
+.remote#options{ hidden }
+.remote#create_organization{ hidden }
+
+.list#organizations
+  - if @parties.any?
+    = render @parties
+  - else
+    = render "common/empty"
+
+#paginate= render "common/paginate"
+#export= render "common/export"
+

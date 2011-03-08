@@ -1,0 +1,28 @@
+= styles_for :task, :contact, :opportunity
+
+#confirm{ hidden }
+.title_tools#menu
+  = link_to_inline(:edit_organization, edit_organization_path(@party), :text => t(:edit)) + " | "
+  = link_to_function(t(:delete) + '?', confirm_delete(@party))
+.title#edit_organization_title= h(@party.name)
+
+%div#edit_organization{ hidden }
+
+= render "comments/new", :commentable => @party
+= render :partial => "common/timeline", :collection => @timeline
+
+= section(@party, :tasks)
+.log#tasks
+  = render "common/tasks"
+
+= section(@party, :contacts)
+.list#contacts
+  = render :partial => "contacts/contact", :collection => @party.contacts
+
+= section(@party, :opportunities)
+.list#opportunities
+  = render :partial => "opportunities/opportunity", :collection => @party.opportunities
+
+= load_select_popups_for(@party, :tasks, :contacts, :opportunities)
+
+= hook(:show_organization_bottom, self)
