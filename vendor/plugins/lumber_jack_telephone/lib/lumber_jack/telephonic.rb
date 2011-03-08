@@ -26,8 +26,8 @@ module LumberJack
       #   Organization.find_all_by_telephone('1234567890') => an array of Organizations with the telephone number '1234567890'.
       #
       # Note that this method will retun an empty array if no instances are found.
-      def has_many_telephones
-        has_many :telephones, :as => :telephonic, :order => "position"
+      def has_many_telephones(class_name = nil)
+        has_many :telephones, :as => :telephonic, :order => "position", :class_name => class_name
         
         class_eval <<-EOV
           include LumberJack::Telephonic::InstanceMethods

@@ -5,8 +5,8 @@ module LumberJack
     end
     
     module ClassMethods
-      def has_many_street_addresses
-        has_many :street_addresses, :as => :addressable, :order => "position"
+      def has_many_street_addresses(klass_name = nil)
+        has_many :street_addresses, :as => :addressable, :order => "position", :class_name => klass_name
         
         class_eval <<-EOV
           include LumberJack::Addressable::InstanceMethods
@@ -34,13 +34,32 @@ module LumberJack
           :conditions => ["purpose LIKE ?", "#{purpose}"], 
           :order => 'position asc')
       end # def
+
+      def street_addresses_for(purpose)
+        self.street_addresses.find(
+          :all, 
+          :conditions => ["purpose LIKE ?", "#{purpose}"], 
+          :order => 'position asc')
+      end # def
       
+      def assign_street_address_for!(purpose, address)
+        address.purpose = purpose
+        address.addressable = self
+        address.insert_at(1)
+        save
+      end
+
       def street_address_best
         self.street_addresses.find(:first, :order => 'position asc')
       end
       
-      def method_missing(method_id, *arguments)
-        if match = /street_address_for_([_a-zA-Z]\w*)/.match(method_id.to_s)
+      def method_missing(method_name, *arguments)
+        case method_name
+        when /street_address_for_([_a-zA-Z]\w*)=/
+          purpose = $1.to_s.gsub('_', ' ')
+          address = arguments[0]
+          assign_street_address_for! purpose, address
+        when /street_address_for_([_a-zA-Z]\w*)/
           self.street_addresses.find(
             :first, 
             :conditions => ["purpose LIKE ?", "%#{$1.to_s.gsub('_', ' ')}%"], 

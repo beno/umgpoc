@@ -5,8 +5,8 @@ module LumberJack
     end
     
   module ClassMethods
-      def has_many_email_addresses
-        has_many :email_addresses, :as => :emailable, :order => "position"
+      def has_many_email_addresses(class_name = nil)
+        has_many :email_addresses, :as => :emailable, :order => "position", :class_name => class_name
         
         class_eval <<-EOV
           include LumberJack::Emailable::InstanceMethods

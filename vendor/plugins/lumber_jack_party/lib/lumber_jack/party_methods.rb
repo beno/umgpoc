@@ -5,7 +5,7 @@ module LumberJack
 #        attr_accessible :name, :dba, :department, :salutation, :first_name, :middle_name, :last_name, :suffix, :tax_id_number
         acts_as_list
         acts_as_tree
-        before_save :concatenate_name
+ #       before_save :concatenate_name
         
         class_eval <<-EOV
           include LumberJack::PartyMethods::InstanceMethods

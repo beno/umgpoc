@@ -5,8 +5,8 @@ module LumberJack
     end
     
     module ClassMethods
-      def has_many_internet_addresses
-        has_many :internet_addresses, :as => :locatable, :order => "position"
+      def has_many_internet_addresses(class_name = nil)
+        has_many :internet_addresses, :as => :locatable, :order => "position", :class_name => class_name
         
         class_eval <<-EOV
           include LumberJack::Locatable::InstanceMethods
