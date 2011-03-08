@@ -269,6 +269,12 @@ tt {
       .section table td input[type="text"], .section table td input[type="password"] {
         width: 240px; }
 
+.subsection {
+  background: whitesmoke;
+  color: #3f3f3f;
+  margin: 0px 0px 2px 0px;
+  padding: 2px 0px 4px 0px; }
+
 .remote {
   border: 5px lightblue solid;
   background: whitesmoke;
