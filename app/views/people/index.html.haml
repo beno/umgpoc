@@ -1,0 +1,21 @@
+= styles_for :person
+
+.title_tools
+  = link_to_inline(:create_person, new_person_path, :text => t(:create_person)) << " | "
+  = link_to_inline(:options, options_people_path, :text=> t(:options))
+
+.title
+  %span#create_person_title #{t :people}
+  = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: none;")
+.remote#options{ hidden }
+.remote#create_organization{ hidden }
+
+.list#people
+  - if @parties.any?
+    = render @parties
+  - else
+    = render "common/empty"
+
+#paginate= render "common/paginate"
+#export= render "common/export"
+
