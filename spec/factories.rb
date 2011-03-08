@@ -52,6 +52,14 @@ Factory.define :party do |p|
   p.created_at          { Factory.next(:time) }
 end
 
+Factory.define :organization, :parent => :party, :class => Organization do |o|
+  o.type     "Organization"
+end
+
+Factory.define :person, :parent => :party, :class => Person do |p|
+  p.type     "Person"
+end
+
 Factory.define :party_relationship do |r|
   r.is_party_id       {|p| p.association(:party) } 
   r.relationship      "Contact"
@@ -59,6 +67,12 @@ Factory.define :party_relationship do |r|
   r.role             "Contactpersoon"
   r.started_on        { Factory.next(:time) }
   r.ended_on          { Factory.next(:time) }
+end
+
+Factory.define :street_address, :class => PartyModel::StreetAddress do |a|
+  a.street_name       {Faker::Address.street_name}
+  a.street_number     12
+  a.postal_code       {Faker::Address.zip_code}
 end
 
 #----------------------------------------------------------------------------
