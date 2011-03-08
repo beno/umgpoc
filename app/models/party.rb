@@ -1,4 +1,5 @@
-class Party < PartyModel::Party 
+class Party < ActiveRecord::Base
+  include PartyModel::Partyable
   belongs_to  :user
   belongs_to  :assignee, :class_name => "User", :foreign_key => :assigned_to
   has_many    :party_opportunities, :dependent => :destroy
