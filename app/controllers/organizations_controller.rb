@@ -1,0 +1,3 @@
+class OrganizationsController < PartiesController
+
+end
