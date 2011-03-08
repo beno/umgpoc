@@ -23,6 +23,9 @@ en-US:
   tab_contacts: Contacts
   tab_opportunities: Opportunities
 
+  tab_people: People 
+  tab_organizations: Organizations
+
   admin_tab_users: Users
   admin_tab_settings: Settings
   admin_tab_plugins: Plugins
@@ -266,6 +269,28 @@ en-US:
   no_account: Do not have an account?
   remember_me: Remember Me
   sign_up_now: Sign Up Now!
+
+  # Views -> Organizations.
+  #----------------------------------------------------------------------------
+  organization: Organization
+  organization_small: organization
+  organization_summary: Organization Summary
+  organizations: Organizations
+  organizations_options: Organizations Options
+  organizations_small: organizations
+  create_organization: Create Organization
+
+
+  # Views -> People.
+  #----------------------------------------------------------------------------
+  person: Person
+  person_small: person
+  person_summary: Person Summary
+  people: People
+  people_options: People Options
+  people_small: people
+  create_people: Create People
+
 
   # Views -> Accounts.
   #----------------------------------------------------------------------------
