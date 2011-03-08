@@ -1,0 +1,17 @@
+= f.hidden_field :purpose 
+%ul
+  %li.street_name
+    = f.label t(:street_name)
+    = f.text_field :street_name, :size => 34
+  %li.street_number
+    = f.label t(:str_number) 
+    = f.text_field :street_number, :class => :street_number, :size => 8
+  %li.postal_code
+    = f.label t(:postal_code)
+    = f.text_field :postal_code, :class => :postal_code, :size => 7
+  %li.city
+    = f.label t(:city)
+    = f.text_field :city, :size => 34
+  %li{:style => "margin:16px 10px 0 0"}
+    = f.link_to_remove "X"
+

@@ -1,0 +1,11 @@
+
+page.call "crm.flick", :empty, :toggle
+page.call "crm.hide_form", :options if called_from_index_page?
+page.call "crm.flip_form", :create_street_address
+
+unless params[:cancel].true?
+  page[:create_street_address].replace_html :partial => "create"
+  page.call "crm.set_title", :create_street_address, t(:create_street_address)
+else
+  page.call "crm.set_title", :create_street_address, t(:street_addresses)
+end
