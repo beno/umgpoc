@@ -85,16 +85,20 @@ class Party < ActiveRecord::Base
   #----------------------------------------------------------------------------
   def self.create_or_select_for(model, params, users)
     if params[:id]
-      account = Account.find(params[:id])
+      party = find(params[:id])
     else
-      account = Account.new(params)
-      if account.access != "Lead" || model.nil?
-        account.save_with_permissions(users)
+      party = new(params)
+      if party.access != "Lead" || model.nil?
+        party.save_with_permissions(users)
       else
-        account.save_with_model_permissions(model)
+        party.save_with_model_permissions(model)
       end
     end
     account
+  end
+
+  def attachable_type=(type)
+    super(type.to_s.classify.constantize.base_class.to_s)
   end
 
   private
@@ -107,5 +111,8 @@ class Party < ActiveRecord::Base
   def nullify_blank_category
     self.category = nil if self.category.blank?
   end
+
+
+
 
 end
