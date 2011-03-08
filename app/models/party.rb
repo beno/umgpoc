@@ -26,6 +26,7 @@ class Party < ActiveRecord::Base
   validate :users_for_shared_access
   before_save :nullify_blank_category
 
+  ADDRESS_TYPES = %w[mail visiting] 
   # Default values provided through class methods.
   #----------------------------------------------------------------------------
   def self.per_page ; 20     ; end
