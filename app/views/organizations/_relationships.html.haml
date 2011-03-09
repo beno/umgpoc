@@ -5,7 +5,7 @@
   %small#party_relationships_intro{ hidden_if(!collapsed) }
     = t(:intro, t(:party_relationships)) unless edit
   #party_relationships{ hidden_if(collapsed) }
-    .sub_section
+    .subsection
       .tools
         = f.link_to_add(t(:new_is_relationship), :is_party_relationships)
       .caption
@@ -20,7 +20,7 @@
             %li
               = f.label t(:of)
               = f.text_field :of_party_id
-    .sub_section
+    .subsection
       .tools
         = f.link_to_add(t(:new_of_relationship), :of_party_relationships)
       .caption
