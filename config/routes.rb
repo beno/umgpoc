@@ -18,6 +18,15 @@ FatFreeCRM::Application.routes.draw do
   resources :emails
   resources :passwords
 
+
+  resources :contracts do
+    member do
+      get :print
+    end
+  end
+  resources :claims               
+  resources :invoices
+
   resources :organizations do
     collection do
       get  :options
