@@ -1,9 +1,0 @@
-= nested_form_for(@party) do |f|
-  = link_to_close new_organization_path
-  = f.hidden_field :user_id
-
-  = f.error_messages :object_name => t('organization')
-
-  = render "organizations/top_section",  :f => f
-  = render "organizations/contact_info", :f => f
- 
