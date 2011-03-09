@@ -115,7 +115,6 @@ GEM
       rspec (~> 2.4.0)
     rubyntlm (0.1.1)
     simple_column_search (1.1.0)
-    simple_form (1.3.1)
     sqlite3 (1.3.3)
     test-unit (1.2.3)
       hoe (>= 1.5.1)
@@ -157,7 +156,6 @@ DEPENDENCIES
   rspec-mocks (>= 2.4.0)
   rspec-rails (>= 2.4.1)
   simple_column_search (>= 1.1.0)
-  simple_form
   sqlite3
   test-unit (= 1.2.3)
   viewpoint
