@@ -11,6 +11,18 @@
 = render "comments/new", :commentable => @party
 = render :partial => "common/timeline", :collection => @timeline
 
+= section(@party, :contracts)
+.list#contracts
+  = list_remote_objects(@party, :contracts)
+
+= section(@party, :claims)
+.list#claims
+  = list_remote_objects(@party, :claims)
+
+= section(@party, :invoices)
+.list#contracts
+  = list_remote_objects(@party, :invoices)
+
 = section(@party, :tasks)
 .log#tasks
   = render "common/tasks"
