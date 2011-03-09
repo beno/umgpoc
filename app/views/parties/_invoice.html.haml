@@ -1,0 +1,16 @@
+- gravatar_size = "16x16"
+
+%li[invoice]{ highlightable(dom_id(invoice, :tools)) }
+  = gravatar_for(invoice, :size => gravatar_size)
+
+  .tools{ invisible, :id => dom_id(invoice, :tools) }
+    invoice tools
+  
+  .indentslim
+    = h("Bedrag: " << invoice.incassobedrag.to_s)
+    %tt
+      = h("")
+    %dt{ :style => "padding: 2px 0px 0px 0px" }
+      = "Invoice date: " << invoice.factuur_datum.to_s
+  
+

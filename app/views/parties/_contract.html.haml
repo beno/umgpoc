@@ -1,0 +1,16 @@
+- gravatar_size = "16x16"
+
+%li[contract]{ highlightable(dom_id(contract, :tools)) }
+  = gravatar_for(contract, :size => gravatar_size)
+
+  .tools{ invisible, :id => dom_id(contract, :tools) }
+    = link_to("Print letter", print_contract_url(contract, :format => :pdf), :target => '_new') << " | " 
+    = link_to_remote "Edit contract", :url => {:controller => "contracts", :action => "edit", :id => contract.id}, :method => :get, :update => dom_id(contract)
+
+  .indentslim
+    = h(contract.branche_omschrijving)
+    %tt
+      = h(contract.pakket_soort_omschrijving)
+    %dt{ :style => "padding: 2px 0px 0px 0px" }
+      = "Contract #: " << contract.nummer.to_s
+      = " | Expires at: " << contract.hoofd_vervaldatum.to_s

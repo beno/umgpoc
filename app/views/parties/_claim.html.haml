@@ -1,0 +1,16 @@
+- gravatar_size = "16x16"
+
+%li[claim]{ highlightable(dom_id(claim, :tools)) }
+  = gravatar_for(claim, :size => gravatar_size)
+
+  .tools{ invisible, :id => dom_id(claim, :tools) }
+    claim tools
+  
+  .indentslim
+    = h(claim.nummer.to_s + " | " + claim.behandelaar)
+    %tt
+      = h("")
+    %dt{ :style => "padding: 2px 0px 0px 0px" }
+      = "Reported at: " << claim.incident_datum.to_s
+  
+
