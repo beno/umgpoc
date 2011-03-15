@@ -1,7 +1,10 @@
 class Party < ActiveRecord::Base
   include PartyModel::Partyable
-  include RemoteResources::HasMany
-
+  include RemoteRecord::HasMany
+  include NoFuzz
+  
+  fuzzy       :name
+  
   belongs_to  :user
   belongs_to  :assignee, :class_name => "User", :foreign_key => :assigned_to
   has_many    :party_opportunities, :dependent => :destroy

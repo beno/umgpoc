@@ -1,3 +1,3 @@
-class Contract < RemoteResources::BalouResource
+class Contract < RemoteRecord::Resources::BalouResource
 
 end

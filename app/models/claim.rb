@@ -1,3 +1,3 @@
-class Claim < RemoteResources::BalouResource
+class Claim < RemoteRecord::Resources::BalouResource
     
 end

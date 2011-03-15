@@ -1,3 +1,3 @@
-class Invoice < RemoteResources::BalouResource
+class Invoice < RemoteRecord::Resources::BalouResource
     
 end
