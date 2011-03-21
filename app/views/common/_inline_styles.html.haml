@@ -1,5 +1,10 @@
 -# Generate dynamic styles that get embedded on the page.
 - content_for :styles do
+  - if models.include?(:datatables)
+    = "@import '/javascripts/datatables/css/demo_page.css';"
+    = "@import '/javascripts/datatables/css/demo_table.css';"
+    = "@import '/javascripts/datatables/css/demo_table_jui.css';"
+    = "@import '/javascripts/jquery-ui/css/custom-theme/jquery-ui-1.8.11.custom.css';"
 
   - if models.include?(:account)
     - Setting.account_category_color.each do |key, value|
