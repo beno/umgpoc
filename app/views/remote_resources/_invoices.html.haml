@@ -1,0 +1,8 @@
+%table#invoices_table
+  %thead
+    %tr
+      %th.number Nr
+      %th.amount Bedrag
+      %th.date Factuurdatum
+  %tbody
+    = render :partial => 'parties/invoice', :collection => @party.invoices

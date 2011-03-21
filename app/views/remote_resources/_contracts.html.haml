@@ -1,0 +1,9 @@
+%table#contracts_table
+  %thead
+    %tr
+      %th.number Nr
+      %th.description Omschrijving
+      %th.description Pakket
+      %th.date Expiratiedatum
+  %tbody
+    = render :partial => 'parties/contract', :collection => @party.contracts

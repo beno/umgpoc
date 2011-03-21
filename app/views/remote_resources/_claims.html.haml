@@ -1,0 +1,8 @@
+%table#claims_table
+  %thead
+    %tr
+      %th.number Nr
+      %th.description Behandelaar
+      %th.date Incidentdatum
+  %tbody
+    = render :partial => 'parties/claim', :collection => @party.claims
