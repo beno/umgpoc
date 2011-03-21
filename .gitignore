@@ -16,3 +16,4 @@ nbproject
 *.swp
 vendor/plugins/crm_*
 vendor/gems/no_fuzz/
+config/sunspot.yml
