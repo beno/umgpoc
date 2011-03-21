@@ -10,6 +10,7 @@
     %style= content_for :styles
 
     = javascript_include_tag :defaults, "modalbox.js", "nested_form", :cache => "cache/all"
+    = javascript_include_tag 'jquery-1.5.1.min', 'datatables/js/jquery.dataTables.min', 'jquery-ui/js/jquery-ui-1.8.11.custom.min', 'application-jquery'
     - unless tabless_layout?
       = javascript_include_tag "crm_classes.js", "calendar_date_select/calendar_date_select.js", "calendar_date_select/format_#{t(:calendar_date_select_format, :default => 'american')}.js", :cache => "cache/classes"
     = hook(:javascript_includes, self)
