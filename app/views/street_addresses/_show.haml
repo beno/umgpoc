@@ -4,10 +4,13 @@
   // - if Setting.compound_address
   %div
     %b #{t title}
-    %br= h "#{address.street_name} #{address.street_number}"
-    %br= h "#{address.postal_code} #{address.city}"
+    %br
+    = h "#{address.street_name} #{address.street_number}"
+    %br
+    = h "#{address.postal_code} #{address.city}"
     - unless address.country_code.blank?
-      %br= h address.country_code
+      %br
+      = h address.country_code
   // - else
   //   %div
   //     %b #{t title}
