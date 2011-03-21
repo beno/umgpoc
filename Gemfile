@@ -22,7 +22,7 @@ gem "paranoid", ">= 0.0.10", :git => "https://github.com/tardate/paranoid.git"
 #gem "simple_form"
 gem "viewpoint"
 gem 'nested_form', :path => File.join(File.dirname(__FILE__), 'vendor', 'gems', 'nested_form')
-gem 'no_fuzz', :git => 'https://github.com/beno/no_fuzz.git'
+#gem 'no_fuzz', :git => 'https://github.com/beno/no_fuzz.git'
 #gem 'no_fuzz', :path => File.join(File.dirname(__FILE__), 'vendor', 'gems', 'no_fuzz')
 
 
