@@ -13,13 +13,13 @@
 
   %div
     - if @party.toll_free_phone
-      #{t :phone_toll_free}: <b>#{@party.toll_free_phone}</b><br />
+      #{t :phone_toll_free}: <b>#{@party.toll_free_phone}</b>
 
     - if @party.phone
-      #{t :phone}: <b>#{@party.phone}</b><br />
+      #{t :phone}: <b>#{@party.phone}</b>
 
     - if @party.fax
-      #{t :fax}: <b>#{@party.fax}</b><br />
+      #{t :fax}: <b>#{@party.fax}</b>
 
   %div= render "street_addresses/show", :type => 'mail', :title => :mail_address
   %div= render "street_addresses/show", :type => 'visiting', :title => :visiting_address
