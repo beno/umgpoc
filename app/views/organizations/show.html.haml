@@ -1,4 +1,4 @@
-= styles_for :task, :contact, :opportunity
+= styles_for :task, :contact, :opportunity, :datatables
 
 #confirm{ hidden }
 .title_tools#menu
@@ -11,17 +11,22 @@
 = render "comments/new", :commentable => @party
 = render :partial => "common/timeline", :collection => @timeline
 
-= section(@party, :contracts)
-.list#contracts
-  = list_remote_objects(@party, :contracts)
-
-= section(@party, :claims)
-.list#claims
-  = list_remote_objects(@party, :claims)
-
-= section(@party, :invoices)
-.list#contracts
-  = list_remote_objects(@party, :invoices)
+%br
+.subtitle= t(:profile)
+#profile
+  %ul
+    %li
+      %a{:href => '#contracts'}= t(:contracts)
+    %li
+      %a{:href => '#claims'}= t(:claims)
+    %li
+      %a{:href => '#invoices'}= t(:invoices)
+  #contracts
+    = list_remote_objects(:contracts)
+  #claims
+    = list_remote_objects(:claims)
+  #invoices
+    = list_remote_objects(:invoices)
 
 = section(@party, :tasks)
 .log#tasks
