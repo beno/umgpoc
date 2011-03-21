@@ -5,4 +5,4 @@ require 'party_model/internet_address'
 require 'party_model/email_address'
 require 'party_model/telephone'
 
-require 'party_model/relationships/contact'
+require 'party_model/relationships/contact_person'
