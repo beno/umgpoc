@@ -572,3 +572,8 @@ div.box {
 .ui-tabs a {
 	padding: 0.25em 1em !important;
 }
+
+.ui-tabs a:hover {
+	background: none !important;
+}
+
