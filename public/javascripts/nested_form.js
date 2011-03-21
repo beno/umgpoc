@@ -30,7 +30,6 @@ document.observe('click', function(e, el) {
 	  var regexp  = new RegExp('new_' + assoc, 'g');
 	  var new_id  = new Date().getTime();
 	  content     = content.replace(regexp, new_id);
-//          var target = $(assoc + '_fields');
           var target = el.up().next('.' + assoc + '_fields');
           if (target) {
             target.insert({ top: content });
